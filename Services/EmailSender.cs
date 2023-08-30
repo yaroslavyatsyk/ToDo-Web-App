@@ -65,7 +65,7 @@ namespace ToDo_Web_App.Services
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("todo-confirm@hotmail.com", "Password Recovery"),
+                From = new EmailAddress("todo-confirm@hotmail.com", "Confirm Account"),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
