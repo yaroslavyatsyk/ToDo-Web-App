@@ -31,16 +31,14 @@ namespace ToDo_Web_App
             builder.Services.AddTransient<IEmailSender, EmailSender>();
             builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
-            builder.Services.AddAuthentication(options =>
+            builder.Services.Configure<CookieAuthenticationOptions>(IdentityConstants.ApplicationScheme, options =>
             {
-                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            })
-.AddCookie(options =>
-{
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(500); // Set the desired timeout here
-});
+
+                options.ExpireTimeSpan = TimeSpan.FromDays(7);
+            });
+
+          
+            builder.Services.AddRazorPages();
 
 
             var app = builder.Build();
@@ -61,6 +59,8 @@ namespace ToDo_Web_App
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication(); // This is new
 
             app.UseAuthorization();
 
