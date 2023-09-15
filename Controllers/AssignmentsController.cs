@@ -20,16 +20,27 @@ namespace ToDo_Web_App.Controllers
 
         private readonly UserManager<ApplicationUser> _userManager;
 
+       
+
         public AssignmentsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _userManager = userManager;
         }
 
+        private string[] GetArrayOfCategories()
+        {
+            string[] categories = { "School", "Work", "Home", "Other" };
+            return categories;
+        }
+
         // GET: Assignments
     
-        public async Task<IActionResult> Index(string title)
+        public async Task<IActionResult> Index(string title = "")
         {
+
+            var categories = GetArrayOfCategories();
+            ViewBag.Categories = categories;
            
             var user = _userManager.FindByNameAsync(User.Identity.Name).Result;
             var assignments = await _context.Assignment.Include(a => a.User).Where(u => u.User.UserName == User.Identity.Name).ToListAsync();
@@ -38,8 +49,12 @@ namespace ToDo_Web_App.Controllers
                 var filteredAssignments = assignments.Where(a => a.Name.Contains(title, StringComparison.OrdinalIgnoreCase));
                 return View(filteredAssignments);
             }
+            
+            
             return View(assignments);
         }
+
+
 
 
 
@@ -70,6 +85,8 @@ namespace ToDo_Web_App.Controllers
         // GET: Assignments/Create
         public IActionResult Create()
         {
+            var categories = GetArrayOfCategories();
+            ViewBag.Categories = categories;
 
             return View();
         }
@@ -81,6 +98,7 @@ namespace ToDo_Web_App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create( Assignment assignment)
         {
+          
             var user = _userManager.FindByNameAsync(User.Identity.Name).Result;
             assignment.UserId = user.Id;
 
@@ -102,6 +120,8 @@ namespace ToDo_Web_App.Controllers
                 return NotFound();
             }
 
+            var categories = GetArrayOfCategories();
+            ViewBag.Categories = categories;
             var assignment = await _context.Assignment.FindAsync(id);
             if (assignment == null)
             {
