@@ -27,11 +27,24 @@ namespace ToDo_Web_App.Controllers
         }
 
         // GET: Assignments
-        public async Task<IActionResult> Index()
+    
+        public async Task<IActionResult> Index(string title)
         {
-           var applicationDbContext = _context.Assignment.Include(p => p.User).Where(u => u.User.UserName == User.Identity.Name);
-            return View(await applicationDbContext.ToListAsync());
+           
+            var user = _userManager.FindByNameAsync(User.Identity.Name).Result;
+            var assignments = await _context.Assignment.Include(a => a.User).Where(u => u.User.UserName == User.Identity.Name).ToListAsync();
+            if (!String.IsNullOrEmpty(title))
+            {
+                var filteredAssignments = assignments.Where(a => a.Name.Contains(title, StringComparison.OrdinalIgnoreCase));
+                return View(filteredAssignments);
+            }
+            return View(assignments);
         }
+
+ 
+
+        
+
 
         // GET: Assignments/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -191,6 +204,7 @@ namespace ToDo_Web_App.Controllers
 
          
         }
+
 
         private bool AssignmentExists(int id)
         {
