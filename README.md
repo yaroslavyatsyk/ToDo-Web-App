@@ -35,6 +35,12 @@ Screenshots will be soon!
 11. Record(s) has (have) been deleted
 ![image](https://github.com/yaroslavyatsyk/ToDo-Web-App/assets/31794068/51c30c4f-5a71-4544-a9b6-51cdcf9697b0)
 
+12. Data filtering
+![image](https://github.com/yaroslavyatsyk/ToDo-Web-App/assets/31794068/adfd8aec-71c4-498c-91f2-00f36cb2d0ba)
+
+13. Results of searching
+![image](https://github.com/yaroslavyatsyk/ToDo-Web-App/assets/31794068/911ddc30-c5c7-4591-82b4-6bcd4e6f698b)
+
 
 
 
