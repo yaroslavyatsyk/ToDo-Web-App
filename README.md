@@ -1,7 +1,6 @@
 # ToDo-Web-App
 The ASP.NET web app the has CRUD operations on tasks/assignments for specific user.
 
-Screenshots will be soon!
 1. Creating a new account
 ![image](https://github.com/yaroslavyatsyk/ToDo-Web-App/assets/31794068/e4757acf-30b0-44ec-b93d-87d076ba30c1)
 
