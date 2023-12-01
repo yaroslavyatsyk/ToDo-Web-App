@@ -34,6 +34,27 @@
             <label class="form-check-label" for="SortByDateDesc">Date Descending</label>
         </div>
 
+        <div class="form-check">
+            <input type="radio" class="form-check-input" id="SortByTypeAsc" name="sortOrder" value="type_asc" @(ViewBag.CurrentSort == "type_asc" ? "checked" : "") />
+            <label class="form-check-label" for="SortByTypeAsc">Type Ascending</label>
+            </div>
+<div class="form-check">
+        <input type="radio" class="form-check-input" id="SortByTypeDesc" name="sortOrder" value="type_desc" @(ViewBag.CurrentSort == "type_desc" ? "checked" : "") />
+            <label class="form-check-label" for="SortByTypeDesc">Type Descending</label>
+            </div>
+<div class="form-check">
+
+    <input type = "radio" class="form-check-input" id="SortByNameAsc" name="sortOrder" value="name_asc" @(ViewBag.CurrentSort == "name_asc" ? "checked" : "")/>
+            <label class="form-check-label" for="SortByTypeDesc">Title Ascending</label>
+
+    </div>
+
+<div class="form-check">
+            <input type="radio" class="form-check-input" id="SortByNameDesc" name="sortOrder" value="name_desc" @(ViewBag.CurrentSort == "name_desc" ? "checked" : "") />
+            <label class="form-check-label" for="SortByNameDesc">Title Descending</label>
+
+    </div>
+
         </div>
 
 <input type="submit" class="btn btn-primary" value="Apply"></input>
