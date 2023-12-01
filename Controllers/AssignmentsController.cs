@@ -107,6 +107,7 @@ namespace ToDo_Web_App.Controllers
                
                 _context.Add(assignment);
                 await _context.SaveChangesAsync();
+                TempData["Message"] = "Assignment created successfully";
                 return RedirectToAction(nameof(Index));
             }
             return View(assignment);
@@ -150,7 +151,10 @@ namespace ToDo_Web_App.Controllers
                 {
                     assignment.UserId = user.Id;
                     _context.Update(assignment);
+
+
                     await _context.SaveChangesAsync();
+                    TempData["Message"] = "Assignment updated successfully";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -216,6 +220,7 @@ namespace ToDo_Web_App.Controllers
             
                 _context.Assignment.Remove(assignment);
                 await _context.SaveChangesAsync();
+            TempData["Message"] = "Assignment deleted successfully";
                 return RedirectToAction(nameof(Index));
             
 
