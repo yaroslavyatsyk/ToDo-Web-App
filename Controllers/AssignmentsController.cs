@@ -64,10 +64,10 @@ namespace ToDo_Web_App.Controllers
                         assignments = assignments.OrderByDescending(a => a.Type).ToList();
                         break;
 
-                        case "title_asc":
+                        case "name_asc":
                         assignments = assignments.OrderBy(a => a.Name).ToList();
                         break;
-                        case "title_desc":
+                        case "name_desc":
                         assignments = assignments.OrderByDescending(a => a.Name).ToList();
                         break;
                 }
