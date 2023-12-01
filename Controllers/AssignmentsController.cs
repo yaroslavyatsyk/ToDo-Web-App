@@ -53,8 +53,22 @@ namespace ToDo_Web_App.Controllers
                         assignments = assignments.OrderByDescending(a => a.DueDate).ToList();
                         break;
                     case "date_asc":
-                    default:
+
                         assignments = assignments.OrderBy(a => a.DueDate).ToList();
+                        break;
+
+                    case "type_asc":
+                        assignments = assignments.OrderBy(a => a.Type).ToList();
+                        break;
+                        case "type_desc":
+                        assignments = assignments.OrderByDescending(a => a.Type).ToList();
+                        break;
+
+                        case "name_asc":
+                        assignments = assignments.OrderBy(a => a.Name).ToList();
+                        break;
+                        case "name_desc":
+                        assignments = assignments.OrderByDescending(a => a.Name).ToList();
                         break;
                 }
             }
