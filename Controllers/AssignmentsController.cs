@@ -39,8 +39,7 @@ namespace ToDo_Web_App.Controllers
         public async Task<IActionResult> Index(string title = "", string sortOrder = "")
         {
 
-            var categories = GetArrayOfCategories();
-            ViewBag.Categories = categories;
+           
            
             var user = _userManager.FindByNameAsync(User.Identity.Name).Result;
             var assignments = await _context.Assignment.Include(a => a.User).Where(u => u.User.UserName == User.Identity.Name).ToListAsync();
