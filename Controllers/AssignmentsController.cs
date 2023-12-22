@@ -36,10 +36,11 @@ namespace ToDo_Web_App.Controllers
 
         // GET: Assignments
     
-        public async Task<IActionResult> Index(string title = "", string sortOrder = "")
+        public async Task<IActionResult> Index(string title = "", string sortOrder = "", string category = "")
         {
 
            
+            ViewBag.Categories = GetArrayOfCategories();
            
             var user = _userManager.FindByNameAsync(User.Identity.Name).Result;
             var assignments = await _context.Assignment.Include(a => a.User).Where(u => u.User.UserName == User.Identity.Name).ToListAsync();
@@ -74,6 +75,12 @@ namespace ToDo_Web_App.Controllers
             if (!String.IsNullOrEmpty(title))
             {
                 var filteredAssignments = assignments.Where(a => a.Name.Contains(title, StringComparison.OrdinalIgnoreCase));
+                return View(filteredAssignments);
+            }
+
+            if(!String.IsNullOrEmpty(category))
+            {
+                var filteredAssignments = assignments.Where(a => a.Type.Contains(category, StringComparison.OrdinalIgnoreCase));
                 return View(filteredAssignments);
             }
             

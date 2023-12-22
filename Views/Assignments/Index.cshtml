@@ -67,6 +67,21 @@
 
 </form>
 
+<form method="get">
+    <label for="cat">Show assignments for</label>
+
+    <select name="category" id="cat">
+        
+        @foreach(var category in ViewBag.Categories)
+        {
+            <option value="@category">@category</option>
+        })
+        </select>
+
+        <br/>
+<input type="submit" class="btn btn-primary" value="Apply"></input>
+</form>
+
 
 <br />
 <p>
