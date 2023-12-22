@@ -67,11 +67,14 @@
 
 </form>
 
+<br />
+
 <form method="get">
     <label for="cat">Show assignments for</label>
 
     <select name="category" id="cat">
         
+<option value="">All Categories</option>
         @foreach(var category in ViewBag.Categories)
         {
             <option value="@category">@category</option>
