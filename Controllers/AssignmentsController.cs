@@ -86,6 +86,7 @@ namespace ToDo_Web_App.Controllers
                 return View(filteredAssignments);
             }
             
+            ViewBag.TotalTasks = assignments.Count;
             
             return View(assignments);
         }
